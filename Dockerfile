@@ -6,8 +6,9 @@ WORKDIR /app
 
 # 複製檔案
 COPY requirements.txt .
-COPY main.py .
-COPY model.pkl .
+
+# 複製應用程式（main.py 和 model.pkl）
+COPY app/ .
 
 # 安裝相依套件
 RUN pip install --no-cache-dir -r requirements.txt
