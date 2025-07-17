@@ -1,20 +1,13 @@
-# 使用官方 Python 映像
 FROM python:3.12-slim
 
-# 設定工作目錄
 WORKDIR /fastapi_actions
 
-# 複製檔案
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 
-# 安裝相依套件
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 開放埠口
+ENV PORT=8080  
 EXPOSE 8080
 
-# 啟動指令
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
-
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
