@@ -7,6 +7,7 @@ WORKDIR /fastapi_actions
 # 複製檔案
 COPY requirements.txt .
 
+COPY main.py .
 
 # 安裝相依套件
 RUN pip install --no-cache-dir -r requirements.txt
